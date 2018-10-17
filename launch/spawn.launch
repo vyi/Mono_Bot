@@ -6,12 +6,12 @@
     <param name="robot_description1" command="$(find xacro)xacro --inorder '$(find mono_bot)/urdf/mono_b.xacro' aruco_id:=$(arg l_id)" />
     <param name="robot_description2" command="$(find xacro)xacro --inorder '$(find mono_bot)/urdf/mono_b.xacro' aruco_id:=$(arg f_id)" />
     
-    <arg name="x_leader" default="-5"/>
-    <arg name="y_leader" default="2.5"/>
+    <arg name="x_leader" default="3.402"/>
+    <arg name="y_leader" default="-1.778"/>
     <arg name="z_leader" default="0.1"/>
     
-    <arg name="x_follower" default="-5"/>
-    <arg name="y_follower" default="3"/>
+    <arg name="x_follower" default="4.45"/>
+    <arg name="y_follower" default="-0.88"/>
     <arg name="z_follower" default="0.1"/>
    
   <arg name="world" default="empty"/> 
@@ -20,9 +20,6 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
-
-  <arg name="bb1" default="Bot_1"/>
-  <arg name="cc1" default="Con_1"/>
 
 
 
@@ -35,14 +32,11 @@
     <arg name="headless" value="$(arg headless)"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
-
     
     
-
-    <node name="leader"   pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description1 -model leader -x $(arg x_leader) -y $(arg y_leader) -z $(arg z_leader) -Y -1.57 -namespace leader"></node>
+    <node name="leader"   pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description1 -model leader -x $(arg x_leader) -y $(arg y_leader) -z $(arg z_leader) -Y -2.6 -namespace leader"></node>
     
-    
-      
-    <node name="follower" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description2 -model follower -x $(arg x_follower) -y $(arg y_follower) -z $(arg z_follower) -Y -1.57 -namespace follower" />
+          
+    <node name="follower" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description2 -model follower -x $(arg x_follower) -y $(arg y_follower) -z $(arg z_follower) -Y -2.65 -namespace follower" />
 
 </launch>

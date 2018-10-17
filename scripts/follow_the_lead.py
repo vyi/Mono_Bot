@@ -61,7 +61,7 @@ class Follower():
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber('/follower/mono_b/camera1/image_raw', Image, self.image_callback)
 
-        self.aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+        self.aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_250)
         self.parameters = aruco.DetectorParameters_create()
     def image_callback(self, data):
         try:
@@ -76,12 +76,14 @@ class Follower():
         #mtx= np.matrix([[381.36246688113556, 0.0, 320.5], [-26.69537268167949, 0.0, 381.36246688113556], [240.5, 0.0, 0.0]])
         mtx = np.copy(K)
         (rows,cols,channels) = frame.shape
-        #print(rows,cols,channels)
+        print("rows:{}, columns:{}, channels:{}".format(rows,cols,channels))
         #if cols > 60 and rows > 60 :
         #    cv2.circle(cv_image, (50,50), 10, 255)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+		
+		#### CORNERS FETCHING
         corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, self.aruco_dict, parameters=self.parameters)
+        print("conrners {}, rejected {}".format(corners, rejectedImgPoints))
         
         if np.all(ids!=None):
             rvec, tvec, _ = aruco.estimatePoseSingleMarkers(corners, 0.18, mtx, dist)
@@ -108,7 +110,7 @@ class Follower():
             # cv2.putText(frame, "Id: " + strg, (0,64), font, 1, (0,255,0),2,cv2.LINE_AA)
             # cv2.putText(frame, "Detected Pose: {} {}".format(rvec, tvec), (0,64), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
             #print("Detected Pose: {} {}".format(rvec, tvec))
-        cv2.imshow("Image window", frame)
+        cv2.imshow("Image window", gray)
         cv2.waitKey(3)
         
     

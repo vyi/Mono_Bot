@@ -19,12 +19,12 @@ d 1
 Tr 1
 
 newmtl Image1
-Ka 1 1 1
-Kd 1 1 1
+Ka 0.262745 0.262745 0.262745
+Kd 0.262745 0.262745 0.262745
 Ks 0.333 0.333 0.333
 Ns 0
 d 1
 Tr 1
-map_Kd simple_Textures/marker_11.png
+map_Kd simple_Textures/Image1.PNG
 
 #EOF

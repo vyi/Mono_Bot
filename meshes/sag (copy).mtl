@@ -1,6 +1,6 @@
 # Alias Wavefront MTL File Exported from SketchUp
 # with OBJexporter (c) 2013 TIG
-# Made for 'simple.obj'
+# Made for 'sag.obj'
 
 newmtl Default_Material
 Ka 1 1 1
@@ -25,6 +25,6 @@ Ks 0.333 0.333 0.333
 Ns 0
 d 1
 Tr 1
-map_Kd simple_Textures/marker_11.png
+map_Kd sag_Textures/Image1.PNG
 
 #EOF
