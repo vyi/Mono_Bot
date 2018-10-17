@@ -1,4 +1,4 @@
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
     <xacro:macro name="link_wheel" params="name">
         <link name="${name}">
             <inertial>
@@ -9,13 +9,13 @@
             <collision name="link_right_wheel_collision">
               <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.01" radius="0.05"/>
               </geometry>
             </collision>
             <visual name="${name}_visual">
               <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.01" radius="0.05"/>
               </geometry>
             </visual>
         </link>
