@@ -87,9 +87,9 @@ class Follower():
         
         if np.all(ids!=None):
             rvec, tvec, _ = aruco.estimatePoseSingleMarkers(corners, 0.18, mtx, dist)
-            # font = cv2.FONT_HERSHEY_SIMPLEX
-            #for i in range(0, ids.size):
-            #    aruco.drawAxis(frame, mtx, dist, rvec[i], tvec[i], 0.1)  # Draw Axis
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            for i in range(0, ids.size):
+                aruco.drawAxis(frame, mtx, dist, rvec[i], tvec[i], 0.1)  # Draw Axis
             aruco.drawDetectedMarkers(frame, corners) #Draw A square around the markers
             rv, tv = inversePerspective(rvec, tvec)
 
@@ -102,15 +102,15 @@ class Follower():
             # print("ypr: {}".format(ypr))
             print("rv:{}, {}".format(rv, math.atan2(rv[2][0],rv[1][0])))
             #print("rv:{}, {}".format(rv, rv.shape))
-            # ###### DRAW ID #####
-            # strg = ''
-            # for i in range(0, ids.size):
-            #     strg += str(ids[i][0])+', '
+            ###### DRAW ID #####
+            strg = ''
+            for i in range(0, ids.size):
+                strg += str(ids[i][0])+', '
 
-            # cv2.putText(frame, "Id: " + strg, (0,64), font, 1, (0,255,0),2,cv2.LINE_AA)
-            # cv2.putText(frame, "Detected Pose: {} {}".format(rvec, tvec), (0,64), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
-            #print("Detected Pose: {} {}".format(rvec, tvec))
-        cv2.imshow("Image window", gray)
+            cv2.putText(frame, "Id: " + strg, (0,64), font, 1, (0,255,0),2,cv2.LINE_AA)
+            cv2.putText(frame, "Detected Pose: {} {}".format(rvec, tvec), (0,64), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            print("Detected Pose: {} {}".format(rvec, tvec))
+        cv2.imshow("Image window", frame)
         cv2.waitKey(3)
         
     
